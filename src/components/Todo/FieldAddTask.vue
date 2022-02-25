@@ -3,9 +3,9 @@
     v-model="newTaskTitle"
     @click:append="addTask"
     @keyup.enter="addTask"
-    class="pa-3"
+    class="field-add-task pa-3"
     outlined
-    label="Add Task"
+    placeholder="Add Task"
     append-icon="mdi-plus"
     hide-details
     clearable
@@ -13,7 +13,6 @@
     <template v-slot:append>
       <v-icon
         @click="addTask"
-        color="primary"
         :disabled="newTaskTitleUnvalid"
       >
         mdi-plus
@@ -47,3 +46,9 @@ export default {
   },
 }
 </script>
+
+<style lang="sass">
+  .field-add-task.v-input--is-focused
+    .v-input__slot
+      background: rgba(31, 94, 129, 0.4) 
+</style>

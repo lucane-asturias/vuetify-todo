@@ -58,6 +58,18 @@ export default {
           this.dialogs.delete = true;
         }
       },
+      { 
+        title: 'Sort', 
+        icon: 'mdi-drag-horizontal-variant',
+        click() {
+          if (!this.$store.state.search) {
+            this.$store.commit('toggleSorting');
+          } else {
+            // prevent to mess up data
+            this.$store.commit('showSnackbar', 'How DARE you try to sort while searching!');
+          }
+        }
+      },
     ],
   }),
   methods: {

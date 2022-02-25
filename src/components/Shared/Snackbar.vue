@@ -18,3 +18,9 @@ export default {
   name: 'Snackbar',
 };
 </script>
+
+<style lang="sass">
+  // solution to fix snackbar not showing properly on mobile
+  div.v-snack:not(.v-snack--absolute)
+    height: 100%
+</style>

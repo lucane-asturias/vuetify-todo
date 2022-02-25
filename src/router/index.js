@@ -1,6 +1,7 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Todo from '../views/Todo.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Todo from '../views/Todo.vue';
+import goTo from 'vuetify/es5/services/goto';
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,18 @@ const routes = [
 
 const router = new VueRouter({
   routes
-})
+});
+
+// this will be fired just before the new route is loaded
+router.beforeEach((to, from, next) => {
+  document.title = `${ process.env.VUE_APP_TITLE } — ${to.name}`
+  next();
+});
+
+// scroll to the stop after the route is loaded
+router.afterEach((to, from) => {
+  // target (offset) + options object
+  goTo(0, { duration: 0 });
+});
 
 export default router
